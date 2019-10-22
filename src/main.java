@@ -14,7 +14,23 @@ public class main {
 			//Creation statement
 			Statement stmt = conn.createStatement();
 			
-			//At the end, put conn.close()
+			//Take data
+			ResultSet rs = stmt.executeQuery("SELECT * FROM USUARIO");
+			
+			while(rs.next()) {
+				String nombre = rs.getString("nombre");
+				String apellido = rs.getString("apellido");
+				
+				System.out.println(nombre+" "+apellido);
+			}
+			
+			//Add change
+			//stmt.executeUpdate(sql);
+			
+			//At the end, put stmt.close() and conn.close()
+			
+			stmt.close();
+			conn.close();
 			
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
